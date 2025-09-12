@@ -1,31 +1,19 @@
 import * as React from 'react';
-import { View, Text, TextInput } from 'react-native';
+import { View, Text } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
 import { Button } from '@react-navigation/elements';
 
-
 export function HomeScreen({ route }: any) {
     const navigation = useNavigation<any>();
-    const [count, setCount] = React.useState(0);
 
     React.useEffect(() => {
         if (route.params?.post) {
-            // Post updated, do something with `route.params.post`
-            // For example, send the post to the server
             console.log('New post: ' + route.params?.post);
         }
     }, [route.params?.post]);
-    React.useEffect(() => {
-        navigation.setOptions({
-            headerRight: () => (
-                <Button onPress={() => setCount((c) => c + 1)}>Update count</Button>
-            ),
-        });
-    }, [navigation]);
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Text>This is Home</Text>
-            <Text>Count: {count}</Text>
             <Button
                 onPress={() => {
                     console.log(route.params);

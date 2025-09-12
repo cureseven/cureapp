@@ -7,6 +7,9 @@ import { CreatePostScreen } from './screens/CreatePost';
 import { ProfileScreen } from './screens/Profile';
 import { Image } from 'react-native';
 import { Button } from '@react-navigation/elements';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { FeedScreen } from './screens/Feed';
+import { MessagesScreen } from './screens/Messages';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,6 +19,18 @@ function LogoTitle() {
       style={{ width: 40, height: 40 }}
       source={require('./assets/cure.jpg')}
     />
+  );
+}
+
+const Tab = createBottomTabNavigator();
+
+function HomeTabs() {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Feed" component={FeedScreen} />
+      <Tab.Screen name="Messages" component={MessagesScreen} />
+    </Tab.Navigator>
   );
 }
 
@@ -32,10 +47,9 @@ function RootStack() {
           fontWeight: 'bold',
         },
       }}>
-      <Stack.Screen name="Home" component={HomeScreen} options={{
+      <Stack.Screen name="Home" component={HomeTabs} options={{
           headerTitle: () => <LogoTitle />,
-          headerRight: () => <Button>Update count</Button>,
-        }} />
+        }}/>
       <Stack.Screen name="Details" component={DetailsScreen} options={{}} />
       <Stack.Screen name="CreatePost" component={CreatePostScreen} options={{
         headerStyle: {
