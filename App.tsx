@@ -6,6 +6,7 @@ import { DetailsScreen } from './screens/Details';
 import { CreatePostScreen } from './screens/CreatePost';
 import { ProfileScreen } from './screens/Profile';
 import { Image } from 'react-native';
+import { Button } from '@react-navigation/elements';
 
 const Stack = createNativeStackNavigator();
 
@@ -32,8 +33,8 @@ function RootStack() {
         },
       }}>
       <Stack.Screen name="Home" component={HomeScreen} options={{
-          // title: 'CureApp',
           headerTitle: () => <LogoTitle />,
+          headerRight: () => <Button>Update count</Button>,
         }} />
       <Stack.Screen name="Details" component={DetailsScreen} options={{}} />
       <Stack.Screen name="CreatePost" component={CreatePostScreen} options={{
