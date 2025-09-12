@@ -10,19 +10,19 @@ export function DetailsScreen({ route }:any) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Details Screen</Text>
-      <Text>itemId: {JSON.stringify(itemId)}</Text>
-      <Text>otherParam: {JSON.stringify(otherParam)}</Text>
+      <Text>itemId: {itemId}</Text>
+      <Text>otherParam: {otherParam}</Text>
       <Button
         onPress={
           () =>
             navigation.push('Details', {
-              otherParam: JSON.stringify(otherParam)
+              otherParam: otherParam
             })
         }
-      >fuga</Button>
-      <Button onPress={() => navigation.navigate('Home')}>Go to Home</Button>
+      >Go Detail</Button>
+      <Button onPress={() => navigation.navigate('Home')}>Go to Home with navigate</Button>
       <Button onPress={() => navigation.goBack()}>Go back</Button>
-      <Button onPress={() => navigation.popTo('Home')}>Go to Home</Button>
+      <Button onPress={() => navigation.popTo('Home')}>Go to Home with popTo</Button>
       <Button onPress={() => navigation.popToTop()}>
         Go back to first screen in stack
       </Button>
